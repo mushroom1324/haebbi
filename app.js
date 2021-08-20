@@ -38,16 +38,14 @@ app.get('/balanceInquiry', (req, res) => {
 })
 
 app.post('/deposit', (req, res) => {
-    req.body.deposit = parseInt(req.body.deposit)
-    myAccount.balance += req.body.deposit
+    myAccount.deposit(parseInt(req.body.deposit))
     res.render('balanceInquiry', {
         balance : myAccount.balance
     })
 })
 
 app.post('/withdraw', (req, res) => {
-    req.body.withdraw = parseInt(req.body.withdraw)
-    myAccount.balance -= req.body.withdraw
+    myAccount.withdraw(parseInt(req.body.withdraw))
     res.render('balanceInquiry', {
         balance : myAccount.balance
     })
